@@ -1,5 +1,6 @@
 import TodoList from '@/components/templates/TodoList.vue';
 import TodoListDetail from '@/components/templates/TodoListDetail.vue';
+import { RouteConfig } from 'vue-router';
 
 export default [
   {
@@ -14,4 +15,4 @@ export default [
     path: '*',
     redirect: '/tasks',
   },
-]
+] as RouteConfig[];
