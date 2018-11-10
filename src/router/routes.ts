@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import TodoList from '@/components/templates/TodoList.vue';
 import TodoListDetail from '@/components/templates/TodoListDetail.vue';
 
