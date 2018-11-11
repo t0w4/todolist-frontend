@@ -17,4 +17,4 @@ export default {
   deleteTask: ({ commit }) => {
     throw new Error('deleteTask action is not implemented');
   },
-}
+};
