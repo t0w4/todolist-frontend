@@ -1,0 +1,54 @@
+<template>
+  <div class="task-board">
+    <div class="task-group board-element">
+      <p class="task-group-element">title</p>
+      <p class="task-group-element"> limit time</p>
+    </div>
+    <TaskButton class="task-button board-element"></TaskButton>
+  </div>
+</template>
+
+<script lang='ts'>
+import TaskButton from '@/components/atoms/TaskButton.vue';
+
+export default {
+  name: 'TaskBoard',
+
+  components: {
+    TaskButton,
+  },
+};
+</script>
+
+<style scoped>
+  .task-group {
+    text-align: left;
+    font-size: 17px;
+  }
+  .task-group-element {
+    margin: 0.3em;
+  }
+  .task-button {
+    margin: 0.7em;
+  }
+  .board-element {
+    float: left;
+  }
+  .task-board {
+    overflow: hidden;
+    padding: 0.5em 1em; /* 外枠と文字との距離 */
+    margin: 2em 0; /* 外枠からのmargin */
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+  }
+
+  /* clearfix */
+  .task-board:before,
+  .task-board:after {
+    content: "";
+    display: table;
+  }
+</style>
