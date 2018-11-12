@@ -7,6 +7,8 @@
 </template>
 
 <script lang='ts'>
+import { Task } from '@/api';
+Task.fetch();
 import TaskBoard from '@/components/molecules/TaskBoard.vue';
 export default {
   name: 'TodoList',
