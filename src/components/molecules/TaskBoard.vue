@@ -1,8 +1,8 @@
 <template>
   <div class="task-board">
     <div class="task-group board-element">
-      <p class="task-group-element">title</p>
-      <p class="task-group-element"> limit time</p>
+      <p class="task-group-element">{{ task.title }}</p>
+      <p class="task-group-element">{{ task.created_at }}</p>
     </div>
     <TaskButton class="task-button board-element"></TaskButton>
   </div>
@@ -16,6 +16,12 @@ export default {
 
   components: {
     TaskButton,
+  },
+
+  props: {
+    task: {
+      type: Object,
+    },
   },
 };
 </script>
