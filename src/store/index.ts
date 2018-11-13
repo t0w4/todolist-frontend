@@ -7,8 +7,10 @@ import mutations from './mutations';
 Vue.use(Vuex);
 
 const state = {
-
-}
+  board: {
+    tasks: [],
+  },
+};
 
 export default new Vuex.Store({
   state,

@@ -1,9 +1,13 @@
 import * as types from './mutation-types';
-import Task from '../api';
+import { Task } from '../api';
 
 export default {
   fetchTasks: ({ commit }) => {
-    throw new Error('fetchTasks action is not implemented');
+    return Task.fetch()
+      .then( ({ tasks }) => {
+        commit(types.FETCH_ALL_TASKS, tasks)
+      })
+      .catch( (err) => { throw err })
   },
 
   createTask: ({ commit }) => {
