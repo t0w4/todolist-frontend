@@ -1,10 +1,10 @@
 <template>
-  <div class="task-board">
-    <div class="task-group board-element">
+  <div class="task-card">
+    <div class="task-group card-element">
       <p class="task-group-element">{{ task.title }}</p>
       <p class="task-group-element">{{ task.created_at }}</p>
     </div>
-    <TaskButton class="task-button board-element"></TaskButton>
+    <TaskButton class="task-button card-element"></TaskButton>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 import TaskButton from '@/components/atoms/TaskButton.vue';
 
 export default {
-  name: 'TaskBoard',
+  name: 'TaskCard',
 
   components: {
     TaskButton,
@@ -37,10 +37,10 @@ export default {
   .task-button {
     margin: 0.7em;
   }
-  .board-element {
+  .card-element {
     float: left;
   }
-  .task-board {
+  .task-card {
     overflow: hidden;
     padding: 0.5em 1em; /* 外枠と文字との距離 */
     margin: 2em 0; /* 外枠からのmargin */
@@ -52,8 +52,8 @@ export default {
   }
 
   /* clearfix */
-  .task-board:before,
-  .task-board:after {
+  .task-card:before,
+  .task-card:after {
     content: "";
     display: table;
   }

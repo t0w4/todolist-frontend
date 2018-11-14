@@ -3,7 +3,7 @@
       <h1>todo lists</h1>
       <ul class="task-list">
         <li v-for="task in tasks" :key="task.id">
-          <TaskBoard v-bind:task="task"/>
+          <TaskCard v-bind:task="task"/>
         </li>
       </ul>
     </div>
@@ -11,11 +11,11 @@
 
 <script lang='ts'>
 import { mapState } from 'vuex';
-import TaskBoard from '@/components/molecules/TaskBoard.vue';
+import TaskCard from '@/components/molecules/TaskCard.vue';
 export default {
   name: 'TodoList',
   components: {
-    TaskBoard,
+    TaskCard,
   },
 
   computed: mapState({
