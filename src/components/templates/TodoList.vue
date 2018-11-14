@@ -7,7 +7,7 @@
             <span class="task-text">todo</span>
           </h2>
           <ul class="task-list">
-            <li v-for="task in tasks" :key="task.id">
+            <li v-for="task in tasks_todo" :key="task.id">
               <TaskCard v-bind:task="task"/>
             </li>
           </ul>
@@ -18,7 +18,7 @@
             <span class="task-text">in progress</span>
           </h2>
           <ul class="task-list">
-            <li v-for="task in tasks" :key="task.id">
+            <li v-for="task in tasks_in_progress" :key="task.id">
               <TaskCard v-bind:task="task"/>
             </li>
           </ul>
@@ -29,7 +29,7 @@
             <span class="task-text">in review</span>
           </h2>
           <ul class="task-list">
-            <li v-for="task in tasks" :key="task.id">
+            <li v-for="task in tasks_in_review" :key="task.id">
               <TaskCard v-bind:task="task"/>
             </li>
           </ul>
@@ -40,7 +40,7 @@
             <span class="task-text">done</span>
           </h2>
           <ul class="task-list">
-            <li v-for="task in tasks" :key="task.id">
+            <li v-for="task in tasks_done" :key="task.id">
               <TaskCard v-bind:task="task"/>
             </li>
           </ul>
@@ -58,9 +58,23 @@ export default {
     TaskCard,
   },
 
-  computed: mapState({
-    tasks: state => state.board.tasks,
-  }),
+  computed: {
+    ...mapState({
+      tasks: state => state.board.tasks,
+      tasks_todo: state => state.board.tasks.filter((task) => {
+        return task.status === 'todo';
+      }),
+      tasks_in_progress: state => state.board.tasks.filter((task) => {
+        return task.status === 'in_progress';
+      }),
+      tasks_in_review: state => state.board.tasks.filter((task) => {
+        return task.status === 'in_review';
+      }),
+      tasks_done: state => state.board.tasks.filter((task) => {
+        return task.status === 'done';
+      }),
+    }),
+  },
 
   created() {
     this.loadTasks();
