@@ -1,26 +1,41 @@
 <template>
     <div class="tasks-view">
       <h1>todo lists</h1>
-      <ul class="task-list">
-        <li v-for="task in tasks" :key="task.id">
-          <TaskCard v-bind:task="task"/>
-        </li>
-      </ul>
+      <div class="tasks-list-wrapper">
+        <TaskColumn v-bind:tasks="tasks_todo">todo</TaskColumn>
+        <TaskColumn v-bind:tasks="tasks_in_progress">in progress</TaskColumn>
+        <TaskColumn v-bind:tasks="tasks_in_review">in review</TaskColumn>
+        <TaskColumn v-bind:tasks="tasks_done">done</TaskColumn>
+      </div>
     </div>
 </template>
 
 <script lang='ts'>
 import { mapState } from 'vuex';
-import TaskCard from '@/components/molecules/TaskCard.vue';
+import TaskColumn from '@/components/organsms/TaskColumn.vue';
 export default {
   name: 'TodoList',
   components: {
-    TaskCard,
+    TaskColumn,
   },
 
-  computed: mapState({
-    tasks: state => state.board.tasks,
-  }),
+  computed: {
+    ...mapState({
+      tasks: state => state.board.tasks,
+      tasks_todo: state => state.board.tasks.filter((task) => {
+        return task.status === 'todo';
+      }),
+      tasks_in_progress: state => state.board.tasks.filter((task) => {
+        return task.status === 'in_progress';
+      }),
+      tasks_in_review: state => state.board.tasks.filter((task) => {
+        return task.status === 'in_review';
+      }),
+      tasks_done: state => state.board.tasks.filter((task) => {
+        return task.status === 'done';
+      }),
+    }),
+  },
 
   created() {
     this.loadTasks();
@@ -34,8 +49,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.task-list {
-  list-style: none;
+<style scoped lang="stylus">
+.tasks-list-wrapper {
+  display: flex;
 }
 </style>

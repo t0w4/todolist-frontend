@@ -29,7 +29,7 @@ export default {
 <style scoped>
   .task-group {
     text-align: left;
-    font-size: 17px;
+    font-size: 14px;
   }
   .task-group-element {
     margin: 0.3em;
@@ -43,11 +43,11 @@ export default {
   .task-card {
     overflow: hidden;
     padding: 0.5em 1em; /* 外枠と文字との距離 */
-    margin: 2em 0; /* 外枠からのmargin */
+    margin: 1em 0; /* 外枠からのmargin */
     font-weight: bold;
-    color: #6091d3;/*文字色*/
+    color: #1352a3;/*文字色*/
     background: #FFF;
-    border: solid 3px #6091d3;/*線*/
+    border: solid 2.2px #1352a3;/*線*/
     border-radius: 10px;/*角の丸み*/
   }
 
