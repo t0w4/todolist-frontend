@@ -30,7 +30,6 @@ export default {
 
 <style scoped lang="stylus">
 .tasks-column {
-  height: 100vh;
   width: 100%;
   overflow: hidden;
   padding: 0 0.5em; /* 外枠と文字との距離 */

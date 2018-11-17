@@ -1,6 +1,6 @@
 <template>
     <div class="tasks-view">
-      <h1>todo lists</h1>
+      <SiteHeader />
       <div class="tasks-list-wrapper">
         <TaskColumn v-bind:tasks="tasks_todo">todo</TaskColumn>
         <TaskColumn v-bind:tasks="tasks_in_progress">in progress</TaskColumn>
@@ -12,10 +12,12 @@
 
 <script lang='ts'>
 import { mapState } from 'vuex';
+import SiteHeader from '@/components/organsms/SiteHeader.vue';
 import TaskColumn from '@/components/organsms/TaskColumn.vue';
 export default {
   name: 'TodoList',
   components: {
+    SiteHeader,
     TaskColumn,
   },
 
@@ -52,5 +54,6 @@ export default {
 <style scoped lang="stylus">
 .tasks-list-wrapper {
   display: flex;
+  padding-top: 50px;
 }
 </style>
