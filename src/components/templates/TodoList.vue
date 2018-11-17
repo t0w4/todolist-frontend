@@ -1,6 +1,8 @@
 <template>
     <div class="tasks-view">
-      <h1>todo lists</h1>
+      <div class="site-header">
+        <a class="top-link" href="/tasks">todo lists</a>
+      </div>
       <div class="tasks-list-wrapper">
         <TaskColumn v-bind:tasks="tasks_todo">todo</TaskColumn>
         <TaskColumn v-bind:tasks="tasks_in_progress">in progress</TaskColumn>
@@ -50,7 +52,20 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+.site-header {
+  font-size: 2em;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  background-color: skyblue;
+
+  .top-link {
+    text-decoration: none;
+  }
+}
+
 .tasks-list-wrapper {
   display: flex;
+  padding-top: 50px;
 }
 </style>
