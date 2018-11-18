@@ -1,8 +1,5 @@
 <template>
-  <button
-    type="button">
-    delete
-  </button>
+  <button type="button"><slot></slot></button>
 </template>
 
 <script lang='ts'>
@@ -11,6 +8,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped lang="stylus">
+  button {
+    border: none;
+  }
 </style>
