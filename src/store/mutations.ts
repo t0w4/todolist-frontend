@@ -15,7 +15,9 @@ export default {
     throw new Error('UPDATE_TASK mutation is not implemented');
   },
 
-  [types.DELETE_TASK](state, payload) {
-    throw new Error('DELETE_TASK mutation is not implemented');
+  [types.DELETE_TASK](state, payload: string) {
+    state.board.tasks = state.board.tasks.filter((task) => {
+      return task.uuid !== payload;
+    });
   },
 };
