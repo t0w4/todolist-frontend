@@ -4,7 +4,7 @@
       <p class="task-group-element">{{ task.title }}</p>
       <p class="task-group-element">{{ task.created_at }}</p>
     </div>
-    <TaskButton class="task-button"><img src="@/assets/cross_icon.png" width="10" height="10"></TaskButton>
+    <TaskButton class="task-button" v-on:click.native="deleteTask(task.uuid)"><img src="@/assets/cross_icon.png" width="10" height="10"></TaskButton>
   </div>
 </template>
 
@@ -21,6 +21,12 @@ export default {
   props: {
     task: {
       type: Object,
+    },
+  },
+
+  methods: {
+    deleteTask(uuid: string) {
+      this.$store.dispatch('deleteTask', uuid );
     },
   },
 };

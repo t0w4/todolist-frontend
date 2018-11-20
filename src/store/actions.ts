@@ -18,7 +18,13 @@ export default {
     throw new Error('updateTask action is not implemented');
   },
 
-  deleteTask: ({ commit }) => {
-    throw new Error('deleteTask action is not implemented');
+  deleteTask: ({ commit }, uuid: string) => {
+    return Task.delete(uuid)
+      .then( () => {
+        commit(types.DELETE_TASK, uuid);
+      })
+      .catch( (err) => {
+        throw err;
+      });
   },
 };
