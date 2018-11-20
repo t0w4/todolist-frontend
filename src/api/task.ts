@@ -10,4 +10,14 @@ export default {
         });
     });
   },
+
+  delete: (uuid: string) => {
+    return new Promise((resolve, reject) => {
+      client.delete(`/tasks/${uuid}`)
+        .then((res) => resolve())
+        .catch((err) => {
+          reject(new Error(err.message));
+        });
+    });
+  },
 };
