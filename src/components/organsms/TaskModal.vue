@@ -2,6 +2,11 @@
   <transition name="modal" appear>
     <div class="modal modal-overlay" @click.self="$emit('close')">
       <div class="modal-window">
+        <header class="modal-header">
+          <slot name="header">
+            <div>task</div>
+          </slot>
+        </header>
         <div class="modal-content">
           <slot/>
         </div>
@@ -43,8 +48,17 @@ export default {
     overflow: hidden;
   }
 
+  &-header  {
+    background: #4D4D4D;
+  	text-transform: uppercase;
+  	color: white;
+  	font-size: 18px;
+  	font-weight: 100;
+  	padding: 10px;
+  }
+
   &-content {
-    padding: 100px 200px;
+    padding: 40px 100px;
   }
 
   &-footer {

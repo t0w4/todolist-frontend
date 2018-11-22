@@ -11,6 +11,20 @@ export default {
     });
   },
 
+  create: (task: {title: string, detail: string, status: string}) => {
+    return new Promise((resolve, reject) => {
+      client.post('/tasks', {
+        title: task.title,
+        detail: task.detail,
+        status: task.status,
+      })
+        .then((res) => resolve(res.data))
+        .catch((err) => {
+          reject(new Error(err.message));
+        });
+    });
+  },
+
   delete: (uuid: string) => {
     return new Promise((resolve, reject) => {
       client.delete(`/tasks/${uuid}`)

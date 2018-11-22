@@ -10,8 +10,14 @@ export default {
       .catch( (err) => { throw err })
   },
 
-  createTask: ({ commit }) => {
-    throw new Error('createTask action is not implemented');
+  createTask: ({ commit }, task: {title: string, detail: string, status: string}) => {
+    return Task.create(task)
+      .then( (created_task) => {
+        commit(types.CREATE_TASK, created_task);
+      })
+      .catch( (err) => {
+        throw err;
+      });
   },
 
   updateTask: ({ commit }) => {
