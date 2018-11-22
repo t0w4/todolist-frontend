@@ -14,15 +14,20 @@
           <img class="add-circle-img" src="@/assets/add_circle.svg">
         </button>
 
-        <!-- コンポーネント MyModal -->
         <TaskModal @close="closeModal" v-if="modal">
-          <!-- default スロットコンテンツ -->
-          <p>Vue.js Modal Window!</p>
-          <div><input v-model="message"></div>
-          <!-- /default -->
+          <!-- header スロットコンテンツ -->
+          <template slot="header">
+            <div>タスク登録</div>
+          </template>
+          <!-- /header -->
+          <!-- スロットコンテンツ -->
+          <div>
+            <input type="text" class="form-element input-title" v-model="task.title" placeholder="タイトル"/>
+            <textarea class="form-element textarea-detail" v-model="task.detail" rows="8" placeholder="詳細"/>
+          </div>
           <!-- footer スロットコンテンツ -->
           <template slot="footer">
-            <button @click="doSend">送信</button>
+            <button @click="doSend">登録</button>
           </template>
           <!-- /footer -->
         </TaskModal>
@@ -46,7 +51,11 @@ export default {
   data() {
     return {
       modal: false,
-      message: '',
+      task: {
+        title: '',
+        detail: '',
+        status: 'todo',
+      },
     }
   },
 
@@ -76,6 +85,9 @@ export default {
     loadTasks() {
       this.$store.dispatch('fetchTasks')
     },
+    createTask(task: {title: string, detail: string, status: string}) {
+      this.$store.dispatch('createTask', task)
+    },
     openModal() {
       this.modal = true
     },
@@ -83,9 +95,11 @@ export default {
       this.modal = false
     },
     doSend() {
-      if (this.message.length > 0) {
-        alert(this.message)
-        this.message = ''
+      if (this.task.title.length > 0 || this.task.detail.length > 0) {
+        this.createTask(this.task);
+        this.task.title = '';
+        this.task.detail = '';
+        this.task.status = 'todo';
         this.closeModal()
       } else {
         alert('メッセージを入力してください')
@@ -96,6 +110,26 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+.form-element {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 500px;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+}
+.input-title {
+	height: 45px;
+}
+.textarea-detail {
+	overflow: hidden;
+}
 .add-circle-button {
   background-color: transparent;
   position: fixed;
