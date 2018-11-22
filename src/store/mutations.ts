@@ -8,7 +8,7 @@ export default {
   },
 
   [types.CREATE_TASK](state, payload) {
-    throw new Error('CREATE_TASK mutation is not implemented');
+    state.board.tasks.push(payload);
   },
 
   [types.UPDATE_TASK](state, payload) {
