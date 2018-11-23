@@ -9,7 +9,6 @@
       </div>
 
       <div class="example-modal-window">
-        <p>ボタンを押すとモーダルウィンドウが開きます</p>
         <button class="add-circle-button" @click="openModal">
           <img class="add-circle-img" src="@/assets/add_circle.svg">
         </button>
