@@ -139,7 +139,7 @@ export default {
 }
 .add-circle-button:active {
   bottom: 9px;
-  right: px;
+  right: 9px;
 }
 .add-circle-img {
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
