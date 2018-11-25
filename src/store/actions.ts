@@ -20,8 +20,14 @@ export default {
       });
   },
 
-  updateTask: ({ commit }) => {
-    throw new Error('updateTask action is not implemented');
+  updateTask: ({ commit }, task: {uuid: string, title: string, detail: string, status: string}) => {
+    return Task.update(task)
+      .then( (updated_task) => {
+        commit(types.UPDATE_TASK, updated_task);
+      })
+      .catch( (err) => {
+        throw err;
+      });
   },
 
   deleteTask: ({ commit }, uuid: string) => {
