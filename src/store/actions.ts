@@ -5,15 +5,15 @@ export default {
   fetchTasks: ({ commit }) => {
     return Task.fetch()
       .then( ({ tasks }) => {
-        commit(types.FETCH_ALL_TASKS, tasks)
+        commit(types.FETCH_ALL_TASKS, tasks);
       })
-      .catch( (err) => { throw err })
+      .catch( (err) => { throw err; });
   },
 
   createTask: ({ commit }, task: {title: string, detail: string, status: string}) => {
     return Task.create(task)
-      .then( (created_task) => {
-        commit(types.CREATE_TASK, created_task);
+      .then( (createdTask) => {
+        commit(types.CREATE_TASK, createdTask);
       })
       .catch( (err) => {
         throw err;
@@ -22,8 +22,8 @@ export default {
 
   updateTask: ({ commit }, task: {uuid: string, title: string, detail: string, status: string}) => {
     return Task.update(task)
-      .then( (updated_task) => {
-        commit(types.UPDATE_TASK, updated_task);
+      .then( (updatedTask) => {
+        commit(types.UPDATE_TASK, updatedTask);
       })
       .catch( (err) => {
         throw err;
