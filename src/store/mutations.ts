@@ -12,7 +12,17 @@ export default {
   },
 
   [types.UPDATE_TASK](state, payload) {
-    throw new Error('UPDATE_TASK mutation is not implemented');
+    // state.board.tasks に配列でアクセスして更新すると画面に反映されないのでdelete, insert
+    // 理由: https://jp.vuejs.org/2016/02/06/common-gotchas/
+    state.board.tasks = state.board.tasks.filter((task) => {
+      return task.uuid !== payload.uuid;
+    });
+    state.board.tasks.push(payload);
+    state.board.tasks.sort((a, b) => {
+      if ( a.id < b.id ) { return -1; }
+      if ( a.id > b.id ) { return 1; }
+      return 0;
+    });
   },
 
   [types.DELETE_TASK](state, payload: string) {
