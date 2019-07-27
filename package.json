@@ -21,7 +21,8 @@
     "js-yaml": ">=3.13.1",
     "lodash": ">=4.17.13",
     "lodash.defaultsdeep": ">=4.6.1",
-    "mem": ">=4.0.0"
+    "mem": ">=4.0.0",
+    "webpack-bundle-analyzer": ">=3.3.2"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^3.0.0",
